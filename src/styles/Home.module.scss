@@ -1,3 +1,108 @@
+@import "./variables";
+@import "./reuseables";
+
+@mixin sectionPadding {
+  padding: 0px 16%;
+}
+
 .main {
   background-color: #fff;
+  .homepage {
+    // padding: 0px 20px;
+    padding-top: 64px;
+    padding-bottom: 64px;
+
+    .heroSection {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 10px;
+      padding-top: 24px;
+      @include sectionPadding();
+      padding-bottom: 48px;
+
+      .image {
+        width: 50%;
+        margin: 0 auto;
+      }
+      .content {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        @include tablet {
+          width: 90%;
+        }
+        @include bigMobilePhone {
+          width: 100%;
+        }
+      }
+    }
+
+    .stepsSection {
+      @include sectionPadding();
+      padding-top: 64px;
+      padding-bottom: 64px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      background-color: $dark-grey;
+      color: $white;
+      &__steps {
+        display: flex;
+        border-radius: 10px;
+        overflow: hidden;
+        .step {
+          background-color: $white;
+          padding: 16px;
+          color: $dark-grey;
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+          width: 100%;
+          h2 {
+            color: $primary-color;
+            font-size: 16px;
+          }
+          span {
+            font-weight: 700;
+          }
+          p {
+            font-size: 12px;
+            line-height: 20px;
+          }
+        }
+      }
+    }
+
+    .walletSection {
+      @include sectionPadding();
+    }
+
+    .getStartedSection {
+      @include sectionPadding();
+      padding-top: 32px;
+      padding-bottom: 32px;
+      background-color: $dark-grey;
+      color: $white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      text-align: center;
+      button {
+        background-color: transparent;
+        border: 3px solid $white;
+        color: $white;
+        border-radius: 4px;
+        padding: 12px;
+        cursor: pointer;
+        &:hover {
+          background-color: $white;
+          color: $primary-color;
+        }
+      }
+    }
+  }
 }

@@ -1,0 +1,87 @@
+// Breakpoints
+@mixin afterMaxWidth() {
+  @media (min-width: (1300px)) {
+    @content;
+  }
+}
+@mixin smallLaptop() {
+  @media (max-width: (1200px)) {
+    @content;
+  }
+}
+@mixin bigTablet() {
+  @media (max-width: (900px)) {
+    @content;
+  }
+}
+@mixin tablet() {
+  @media (max-width: (768px)) {
+    @content;
+  }
+}
+@mixin bigMobilePhone() {
+  @media (max-width: (520px)) {
+    @content;
+  }
+}
+@mixin smallmobilePhone() {
+  @media (max-width: (320px)) {
+    @content;
+  }
+}
+
+
+@mixin sectionPadding {
+  padding: 0px 16%;
+}
+
+.walletsSection {
+  // padding: 0px 20px;
+  padding-top: 48px;
+  // border: 1px solid #000;
+  &__walletGroup {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    margin-top: 48px;
+    width: 100%;
+    // border: 1px solid #000;
+    // width: 80%;
+    // margin: 0 auto;
+    .wallet {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      align-items: center;
+      cursor: pointer;
+      border: 1px solid transparent;
+      padding: 10px;
+      border-radius: 12px;
+      &:hover {
+        color: $primary-color;
+        border: 1px solid $primary-color;
+        box-shadow: 0px 0px 0px 4px rgba(59, 153, 252, 0.2);
+        .walletImage {
+          scale: 1.1;
+        }
+      }
+
+      .walletImage {
+        width: 70px;
+        height: 70px;
+        border-radius: 100%;
+        overflow: hidden;
+      }
+      p {
+        font-size: 14px;
+        font-weight: 600;
+        width: 65%;
+        word-wrap: break-word;
+        text-align: center;
+      }
+    }
+  }
+  .topArea {
+    text-align: center;
+  }
+}

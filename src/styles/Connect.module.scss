@@ -1,0 +1,8 @@
+@import './variables';
+@import './reuseables';
+
+.connectPage {
+    @include sectionPadding();
+    padding-top: 24px;
+    padding-bottom: 64px;
+}

@@ -1,0 +1,105 @@
+@import './variables';
+@import './reuseables';
+
+.validationPage {
+    padding-top: 80px;
+    padding-bottom: 80px;
+    &__top {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        h2 {
+            font-size: 16px;
+        }
+        .image {
+            width: 80px;
+            height: 80px;
+            border-radius: 16px;
+            overflow: hidden;
+        }
+        p {
+            font-size: 14px;
+            span {
+                background-color: rgba($color: $dark-grey, $alpha: 0.1);
+                padding: 4px;
+            }
+        }
+    }
+    &__tabSection {
+        @include sectionPadding;
+        margin-top: 24px;
+        .tabs {
+            width: fit-content;
+            margin: 0 auto;
+            span {
+                padding: 8px 12px;
+                background-color: $white;
+                color: $dark-grey;
+                font-weight: 600;
+                font-size: 12px;
+                // border: 1px solid;
+                cursor: pointer;
+                &:hover {
+                    color: $primary-color;
+                }
+            }
+            .active {
+                background-color: $primary-color;
+                color: $white;
+                &:hover {
+                    color: $white;
+                }
+            }
+        }
+    }
+    &__formSection {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2px;
+        background-color: $white;
+        width: fit-content;
+        margin: 0 auto;
+        padding: 32px;
+        margin-top: 40px;
+        // border: 1px solid;
+        box-shadow: 0px 4px 6px 0px rgba(0, 0, 0, 0.1);
+        .inputArea {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+            &:nth-child(1) {
+                margin-top: 0;
+            }
+            span {
+                font-size: 10px;
+                color: rgba($color: $dark-grey, $alpha: 0.5);
+                margin-right: auto;
+            }
+        }
+        label {
+            font-size: 12px;
+            margin-bottom: 8px;
+            color: rgba($color: $dark-grey, $alpha: 0.8);
+        }
+        input {
+            width: 300px;
+            padding: 10px;
+            background-color: $white;
+            outline: none;
+            border: 0.5px solid #ddd;
+            color: $dark-grey;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: $primary-color;
+            border: none;
+            border-radius: 4px;
+            margin-top: 8px;
+            cursor: pointer;
+        }
+    }
+}

@@ -1,0 +1,41 @@
+@import './variables';
+@import "./reuseables";
+
+@mixin sectionPadding {
+  padding: 0px 16%;
+}
+
+.footer {
+    @include sectionPadding();
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: $white;
+
+    &__lhs {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        .icon {
+            width: 20px;
+            height: 20px;
+            border-radius: 100%;
+            box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.08);
+            display: grid;
+            place-items: center;
+            cursor: pointer;
+            svg {
+                width: 14px;
+                height: 14px;
+            }
+        }
+    }
+    &__rhs {
+        font-size: 14px;
+    }
+}

@@ -5,7 +5,7 @@ import images from "../../public/images";
 import { useRouter } from "next/router";
 import { wallets } from "@/Constants/wallets";
 import { WalletInfo } from "@/models/WalletInfo";
-import { useForm, ValidationError } from '@formspree/react';
+// import { useForm, ValidationError } from '@formspree/react';
 
 interface ValidateWalletProps {
 

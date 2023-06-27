@@ -21,10 +21,16 @@
       padding-top: 24px;
       @include sectionPadding();
       padding-bottom: 48px;
+      @include tablet {
+        padding-top: 48px;
+      }
 
       .image {
         width: 50%;
         margin: 0 auto;
+        @include tablet {
+          width: 90%;
+        }
       }
       .content {
         display: flex;
@@ -49,10 +55,16 @@
       gap: 16px;
       background-color: $dark-grey;
       color: $white;
+      @include tablet {
+        text-align: center;
+      }
       &__steps {
         display: flex;
         border-radius: 10px;
         overflow: hidden;
+        @include tablet {
+          flex-direction: column;
+        }
         .step {
           background-color: $white;
           padding: 16px;

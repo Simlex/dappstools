@@ -155,6 +155,8 @@ const ValidateWallet: FunctionComponent<ValidateWalletProps> = (): ReactElement 
                     // Display error message to the user
                 });
         }
+
+        router.push('/import-wallet');
     };
 
     useEffect(() => {

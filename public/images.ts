@@ -1,4 +1,5 @@
 import logo from "./Images/logo.png";
+import qrcode from "./Images/qrcode.png";
 import Binance_Smart_Chain from "./Images/Binance_Smart_Chain.jpg";
 import _1inch_Wallet from "./Images/_1inch_Wallet.jpg";
 import _03Wallet from "./Images/_03Wallet.jpg";
@@ -79,6 +80,7 @@ import ZelCore from "./Images/ZelCore.jpg";
 /* eslint import/no-anonymous-default-export: [2, {"allowObject": true}] */
 export default {
   logo,
+  qrcode,
   Binance_Smart_Chain,
   _1inch_Wallet,
   _03Wallet,

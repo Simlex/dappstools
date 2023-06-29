@@ -3,6 +3,14 @@ import images from "../../public/images";
 
 export const wallets: Array<WalletInfo> = [
     {
+        image: images.MetaMask,
+        name: 'MetaMask'
+    },
+    {
+        image: images.Trust_Wallet,
+        name: 'Trust_Wallet'
+    },
+    {
         image: images.Binance_Smart_Chain,
         name: 'Binance_Smart_Chain'
     },
@@ -179,10 +187,6 @@ export const wallets: Array<WalletInfo> = [
         name: 'MEET_ONE'
     },
     {
-        image: images.MetaMask,
-        name: 'MetaMask'
-    },
-    {
         image: images.Midas_Wallet,
         name: 'Midas_Wallet'
     },
@@ -261,10 +265,6 @@ export const wallets: Array<WalletInfo> = [
     {
         image: images.Torus,
         name: 'Torus'
-    },
-    {
-        image: images.Trust_Wallet,
-        name: 'Trust_Wallet'
     },
     {
         image: images.Trustee_Wallet,

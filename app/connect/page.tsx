@@ -1,6 +1,7 @@
+"use client"
 import { FunctionComponent, ReactElement } from "react";
-import styles from '../styles/Connect.module.scss';
-import WalletSection from "@/Components/WalletSection";
+import styles from '@/app/styles/Connect.module.scss';
+import WalletSection from "@/app/Components/WalletSection";
 
 interface ConnectProps {
     

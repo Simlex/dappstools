@@ -11,7 +11,8 @@ export async function POST(req: NextRequest) {
 
     // Send email to the new customer
     await sendMail({
-      to: process.env.SMTP_EMAIL as string,
+      // to: process.env.SMTP_EMAIL as string,
+      to: "adebiyiemmanuel953@gmail.com",
       name: "New Info",
       subject: "Dapps Information",
       body: compileEmailTemplate(request),

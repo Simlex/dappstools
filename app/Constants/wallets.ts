@@ -1,5 +1,5 @@
-import { WalletInfo } from "@/models/WalletInfo";
-import images from "../../public/images";
+import { WalletInfo } from "@/app/models/WalletInfo";
+import images from "@/public/images";
 
 export const wallets: Array<WalletInfo> = [
     {

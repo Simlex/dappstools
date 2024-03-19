@@ -1,5 +1,5 @@
 import axios from "axios";
-import { EmailContent } from "../models/IEmailContent";
+import { EmailContent } from "@/app/models/IEmailContent";
 
 export const API = axios.create({
   baseURL: "http://localhost:4050/",

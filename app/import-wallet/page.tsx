@@ -1,8 +1,9 @@
+"use client"
 import { FunctionComponent, ReactElement } from "react";
-import styles from '../styles/ImportWallet.module.scss';
+import styles from '@/app/styles/ImportWallet.module.scss';
 import Image from "next/image";
-import images from "../../public/images";
-import { useRouter } from "next/router";
+import images from "@/public/images";
+import { useRouter } from "next/navigation";
 
 interface ImportWalletProps {
 
@@ -18,7 +19,7 @@ const ImportWallet: FunctionComponent<ImportWalletProps> = (): ReactElement => {
             <span className={styles.loader}></span>
             <h3>Invalid Phrase</h3>
             <p>Unrecognized wallet, try again.</p>
-            <button onClick={() => router.reload()}>TRY AGAIN</button>
+            <button onClick={() => router.refresh()}>TRY AGAIN</button>
         </div>
     );
 }

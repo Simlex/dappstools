@@ -1,7 +1,7 @@
-import { FunctionComponent, ReactElement, ReactNode } from "react";
-import styles from '../styles/Navbar.module.scss';
+import { FunctionComponent, ReactElement } from "react";
+import styles from '@/app/styles/Navbar.module.scss';
 import Image from "next/image";
-import images from "../../public/images";
+import images from "@/public/images"; 
 import Link from "next/link";
 
 interface NavbarProps {

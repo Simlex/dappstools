@@ -1,5 +1,5 @@
 import { FunctionComponent, ReactElement, ReactNode } from "react";
-import styles from '../styles/Footer.module.scss';
+import styles from '@/app/styles/Footer.module.scss';
 import Link from "next/link";
 
 interface FooterProps {

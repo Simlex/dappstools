@@ -11,6 +11,11 @@
     width: 100%;
     background-color: $white;
 
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+
     .logoArea {
         display: flex;
         align-items: center;

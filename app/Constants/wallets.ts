@@ -19,6 +19,10 @@ export const wallets: Array<WalletInfo> = [
         name: '_1inch_Wallet'
     },
     {
+        image: images.coinbase,
+        name: 'Coinbase'
+    },
+    {
         image: images._03Wallet,
         name: '_03Wallet'
     },

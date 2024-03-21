@@ -2,6 +2,7 @@ import logo from "./Images/logo.png";
 import qrcode from "./Images/qrcode.png";
 import Binance_Smart_Chain from "./Images/Binance_Smart_Chain.jpg";
 import _1inch_Wallet from "./Images/_1inch_Wallet.jpg";
+import coinbase from "./Images/coinbase.jpg";
 import _03Wallet from "./Images/_03Wallet.jpg";
 import Aktionariat from "./Images/Aktionariat.jpg";
 import Alice from "./Images/Alice.jpg";
@@ -83,6 +84,7 @@ export default {
   qrcode,
   Binance_Smart_Chain,
   _1inch_Wallet,
+  coinbase,
   _03Wallet,
   Aktionariat,
   Alice,
